@@ -5,9 +5,6 @@ import java.util.Scanner;
 
 public class AVC_POO {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         
@@ -18,7 +15,7 @@ public class AVC_POO {
         
         System.out.println("LOJA DE ELETRONICOS");
         while(run){
-                System.out.println("--------- Menu principal ---------");
+        System.out.println("--------- Menu principal ---------");
                 System.out.println("Escolha uma opcao: ");
                 System.out.println("  1 - Salvar Produto");
                 System.out.println("  2 - Excluir Produto");
@@ -28,22 +25,31 @@ public class AVC_POO {
                 System.out.println("  S - Sair");
                 System.out.print("> ");
                 
-                String opcao = input.next();
-                        
-                System.out.println();
+                String opcao = input.nextLine();
+
                 switch (opcao.toUpperCase()){
-                    case "1":
-                        System.out.println("Digite o preco: ");
-                        System.out.print("> ");               
-                        double preco = input.nextDouble();                      
-                        
+                    case "1":        
+                    try{
+
                         System.out.println("Digite o nome do produto: ");
                         System.out.print("> ");              
                         String nome = input.nextLine();
-                        
+
+                        System.out.println();
+
+                        System.out.println("Digite o preco: ");
+                        System.out.print("> ");               
+                        double preco = input.nextDouble(); 
 
                         produtos.add(new Salvar(nome, preco));
-                        break;
+                        System.out.println("\n Produto Cadastrado com Sucesso!! \n");
+
+                    } catch (Exception e){
+                        System.out.println("\n Produto Nao Cadastrado !! \n");
+                    }
+
+                    input.nextLine();
+                    break;
 
                     case "2":
                         System.out.println("Excluindo produto ...");
@@ -55,25 +61,32 @@ public class AVC_POO {
                         
                     case "4":
                         try{
-                            System.out.println("Dar desconto no produto ... ");
-                            System.out.println("Escolha um produto pelo seu id: ");
-                            int id = input.nextInt();
+                            if (!produtos.isEmpty()){
+                                System.out.println("------ Definir Descontos ------");
+                                System.out.println("Escolha um produto pelo seu id: ");
+                                int id = input.nextInt();
+    
+                                produto = produtos.get(id);
 
-                            System.out.println();
-
-                            System.out.println("Digite um desconto para o produto: ");
-                            int desconto = input.nextInt();
-
-                            produto = produtos.get(id);
-
-                            produto.setDesconto(desconto);
-
-                            System.out.println("Desconto de: " + desconto + "% feito para o produto de id: " + id);
-
-                            
-                            
+                                System.out.println();
+    
+                                System.out.println("Digite um desconto para o produto: ");
+                                int desconto = input.nextInt();
+                                input.nextLine();
+    
+                                produto.setDesconto(desconto);
+                                
+                                System.out.println("\nDesconto de: " + desconto + "% feito para o produto de id: " + id);
+                            } else {
+                                System.out.println(" Sem produtos cadastrados !");
+                            }
+               
                         } catch (InputMismatchException e){
-                            System.out.println("Digite um id valido");
+                            input.nextLine();
+                            System.out.println("\nDigite um id valido!");
+                        } catch (IndexOutOfBoundsException e){
+                            input.nextLine();
+                            System.out.println("\nId não encontrado!");
                         }
                         
                         break;
@@ -86,13 +99,14 @@ public class AVC_POO {
                             for(int i = 0; i < produtos.size(); i++){
                                 produto = produtos.get(i);
 
-        //                            System.out.println("| ID |\t Nome do Produto \t|\t Preco \t|");
-                                System.out.print("| " + i + " |");
-                                produto.info_produto();
+                                   System.out.println("| ID |   Nome do Produto  |   Preco   |  Desconto  |");
+                                System.out.print("|  " + i + " | " + produto.info_produto().replace(", ", " | "));
+                                System.out.println();
                             }
                         } else {
                             System.out.println("Sem produtos cadastrados !");
                         }
+                        
                         break;
                         
                     case "S":
@@ -102,8 +116,7 @@ public class AVC_POO {
                         System.out.println(" !Opcao invalida! ");
                         break;
                     
-                }
-                
+                }      
                 System.out.println();
         }
     }

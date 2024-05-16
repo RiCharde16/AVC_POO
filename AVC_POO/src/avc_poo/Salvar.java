@@ -15,14 +15,8 @@ public class Salvar {
         this.desconto = desconto;
     }
     
-    public void info_produto(){
-        System.out.println("Informacoes do produto");
-        System.out.println("Nome: " + nome);
-        System.out.println("Preo: " + nome);
-        if(desconto > 0){
-            System.out.println("Desconto: " + desconto + "%");
-        } else {
-            System.out.println("Se desconto!");
-        }
+    public String info_produto(){
+        return nome + ", " + preco + ", " + desconto;
     }
 }
+
