@@ -15,7 +15,7 @@ interface Salvar {
 
 // Classe para salvar os produtos em um ArrayList produtos
 public class Cadastrar implements Salvar{
-    private ArrayList produtos;
+    private ArrayList<Produto> produtos;
     private String arquivo;
     
     public void salvarProduto(Produto item){

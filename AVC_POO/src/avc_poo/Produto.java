@@ -1,7 +1,7 @@
 package avc_poo;
 
 
-public class Produto extends Calculo {
+public class Produto implements Calculo {
     private String nome;
     private int quantidade;
     private double preco;
@@ -17,7 +17,7 @@ public class Produto extends Calculo {
         this.desconto = desconto;
     }
     
-    public String date(){
+    public String data(){
         return nome + ", " + preco + ", " + quantidade+ ", " + desconto;
     }
 }
