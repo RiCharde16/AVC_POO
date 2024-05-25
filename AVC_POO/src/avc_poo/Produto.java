@@ -1,23 +1,32 @@
 package avc_poo;
 
+import java.util.ArrayList;
 
-public class Produto implements Calculo {
+interface Estoque{
+    public float calcularMediaPreco(ArrayList<Produto> produtos);
+
+    public void exibirProdutos(ArrayList<Produto> produtos);
+}
+
+
+public class Produto extends Calculo {
+    private int codProduto = 1;
     private String nome;
     private int quantidade;
     private double preco;
-    private int desconto;
     
-    public Produto(String nome, double preco , int quantidade){
+    public Produto(int codProduto, String nome, double preco , int quantidade){
+        this.codProduto = codProduto;
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
     }
-    
-    public void setDesconto(int desconto){
-        this.desconto = desconto;
+
+    public int getCodProduto(){
+        return this.codProduto;
     }
     
     public String data(){
-        return nome + ", " + preco + ", " + quantidade+ ", " + desconto;
+        return codProduto+ "; "+nome + "; " + preco + "; " + quantidade+ "; " + desconto;
     }
 }
