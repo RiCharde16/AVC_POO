@@ -23,7 +23,7 @@ public class Cadastrar implements Salvar{
         this.arquivo = arquivo;
     }
 
-    public static boolean modificarProduto(ArrayList<Produto> produtos){
+    public static void modificarProduto(ArrayList<Produto> produtos){
         Produto produto = null;
 
         try{
@@ -50,21 +50,16 @@ public class Cadastrar implements Salvar{
 
             input.nextLine();
 
-            return false;
-
         } catch (IndexOutOfBoundsException e){
             System.out.println("\nId não encontrado!");
 
             input.nextLine();
 
-            return false;
         }
-
-        return true;
         
     }
 
-    public static boolean excluirProduto(ArrayList<Produto> produtos){
+    public static void excluirProduto(ArrayList<Produto> produtos){
         Produto produto = null;
 
         try{
@@ -91,20 +86,17 @@ public class Cadastrar implements Salvar{
 
             input.nextLine();
 
-            return false;
 
         } catch (IndexOutOfBoundsException e){
             System.out.println("\nId não encontrado!");
 
             input.nextLine();
 
-            return false;
         }
 
-        return true;
     }
 
-    public static boolean salvarProduto(ArrayList<Produto> produtos){
+    public static void salvarProduto(ArrayList<Produto> produtos){
         try{
 
             System.out.println("Digite o nome do produto: ");
@@ -134,13 +126,11 @@ public class Cadastrar implements Salvar{
             produtos.add(new Produto(produtos.size()+1 ,nome.trim(), preco, qtde));
             System.out.println("\n Produto Cadastrado com Sucesso!! \n");  
 
-            return true;
         } catch (Exception e){
             System.out.println("\n Produto Nao Cadastrado !! \n");
 
             input.nextLine();
             
-            return false;
         }
     }
     

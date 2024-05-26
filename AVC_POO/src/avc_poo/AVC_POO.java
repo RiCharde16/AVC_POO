@@ -34,19 +34,17 @@ public class AVC_POO {
 
 
             switch (opcao.toUpperCase()){
-                case "1":        
-                    if(Cadastrar.salvarProduto(produtos)){
+                case "1":
+                        Cadastrar.salvarProduto(produtos);
                         database.salvarDados(produtos);
                         produtos = database.recuperarDados();
-                    }
                     break;
 
                 case "2":
                     if(!produtos.isEmpty()){
-                        if(Cadastrar.excluirProduto(produtos)){
-                            database.salvarDados(produtos);
-                            produtos = database.recuperarDados();
-                        }
+                        Cadastrar.excluirProduto(produtos);
+                        database.salvarDados(produtos);
+                        produtos = database.recuperarDados();
 
                     } else{
                         System.out.println("\nsem produtos cadastrados!");
