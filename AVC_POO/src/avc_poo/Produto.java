@@ -3,7 +3,9 @@ package avc_poo;
 import java.util.ArrayList;
 
 interface Estoque{
-    public float calcularMediaPreco(ArrayList<Produto> produtos);
+    public static float calcularMediaPreco(ArrayList<Produto> produtos){
+        return 0.0f;
+    }
 
     public static void exibirProdutos(ArrayList<Produto> produtos){
         System.out.println(" ------ Produtos da loja ------ ");
@@ -13,7 +15,7 @@ interface Estoque{
             System.out.println("| ID | \tNome do Produto \t | Preco \t|  Quantidade  |  Desconto  |");
             for(int i = 0; i < produtos.size(); i++){
                 Produto produto = produtos.get(i);
-                System.out.print("|  " + produto.data().replace("; ", " | ") + " |");
+                System.out.print("|  " + produto.dados().replace("; ", " | ") + " |");
                 System.out.println();
             }
         } else {
@@ -27,8 +29,8 @@ interface Estoque{
 public class Produto extends Calculo implements Estoque {
     private int codProduto = 1;
     private String nome;
-    private int quantidade;
     private double preco;
+    private int quantidade;
     
     public Produto(int codProduto, String nome, double preco , int quantidade){
         this.codProduto = codProduto;
@@ -61,15 +63,10 @@ public class Produto extends Calculo implements Estoque {
         this.preco = preco;
     }
 
-    public String data(){
+    public String dados(){
         String preco_format = String.format("%.2f", preco).replace(",", ".");
 
         return codProduto+ "; "+nome.trim() + "; " + preco_format + "; " + quantidade+ "; " + desconto;
-    }
-
-    public float calcularMediaPreco(ArrayList<Produto> produtos){
-        // TODO: fazer a logica para pegar o preco dos produtos e calcular a sua media;
-        return 0.00f;
     }
 
 }

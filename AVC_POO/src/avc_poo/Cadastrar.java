@@ -138,7 +138,7 @@ public class Cadastrar implements Salvar{
         try{
             FileWriter banco_dados = new FileWriter(arquivo);
             for(Produto produto : produtos){
-                banco_dados.write(produto.data()+"\n");
+                banco_dados.write(produto.dados()+"\n");
             }
             banco_dados.close();
         } catch (IOException e){
