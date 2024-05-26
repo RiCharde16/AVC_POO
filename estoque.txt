@@ -1,0 +1,5 @@
+1; Motorola e6 plus; 1239.44; 20; 20
+2; Asus Zembook 8gb i7; 6594.99; 2; 40
+3; Mouse com Fio USB; 29.82; 100; 0
+4; SSD kingston 480gb; 219.99; 15; 0
+5; Teclado sem Fio Logitech; 215.90; 10; 10

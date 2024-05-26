@@ -8,13 +8,13 @@ public class AVC_POO {
         Scanner input = new Scanner(System.in);
         
         ArrayList<Produto> produtos = new ArrayList<>();
-        Produto produto = null;
         Cadastrar database = new Cadastrar("estoque.txt");
         
+        // variavel para correr infinitamente o loop, até o usuario fechar o programa, ou sair
         boolean run = true;
+    
         
-        
-        System.out.println("LOJA DE ELETRONICOS");
+        System.out.println("================== LOJA DE PRODUTOS ELETRONICOS ===========================");
 
         produtos = database.recuperarDados();
 
@@ -23,17 +23,18 @@ public class AVC_POO {
             System.out.println("Escolha uma opcao: ");
             System.out.println("  1 - Salvar Produto");
             System.out.println("  2 - Excluir Produto");
-            System.out.println("  3 - Calcular a venda");
-            System.out.println("  4 - Dar descontos percentuais nos produtos ");
-            System.out.println("  5 - Mostrar produtos ");
+            System.out.println("  3 - Modificar Produto "); 
+            System.out.println("  4 - Dar descontos percentuais nos produtos "); // DONE
+            System.out.println("  5 - Calcular a venda"); 
+            System.out.println("  6 - Mostrar produtos "); // DONE
             System.out.println("  S - Sair");
             System.out.print("> ");
             
             String opcao = input.nextLine();
 
+
             switch (opcao.toUpperCase()){
                 case "1":        
-                    // Cadastrar.salvarProduto(produtos);
                     if(Cadastrar.salvarProduto(produtos)){
                         database.salvarDados(produtos);
                         produtos = database.recuperarDados();
@@ -41,16 +42,37 @@ public class AVC_POO {
                     break;
 
                 case "2":
-                    System.out.println("Excluindo produto ...");
+                    if(!produtos.isEmpty()){
+                        if(Cadastrar.excluirProduto(produtos)){
+                            database.salvarDados(produtos);
+                            produtos = database.recuperarDados();
+                        }
+
+                    } else{
+                        System.out.println("\nsem produtos cadastrados!");
+                    }
                     break;
                     
                 case "3":
-                    System.out.println("Calcular venda do produto ...");
+                    //TODO: criar o metodo para modificar um produto
+                    if(!produtos.isEmpty()){
+                        System.out.println("Modificar produto");
+
+                    } else{
+                        System.out.println("\nsem produtos cadastrados!");
+                    }
                     break;
                     
                 case "4":
                     if (!produtos.isEmpty()){
+                        // Altera o desconto do produto
                         Calculo.definirDesconto(produtos);
+
+                        // Salva o desconto no arquivo estoque.txt
+                        // e depois le os dados novamente do arquivo salvo para armazenar na variavel
+                        database.salvarDados(produtos);
+                        database.recuperarDados();
+
                     } else {
 
                         System.out.println(" Sem produtos cadastrados !");
@@ -58,21 +80,19 @@ public class AVC_POO {
                         
                     break;
                     
-                case "5":
-                    System.out.println(" ------ Produtos da loja ------ ");
-                    
+                case "5" :
                     if(!produtos.isEmpty()){
-                        
-                        System.out.println("| ID |   Nome do Produto  |   Preco   |  Quantidade  |  Desconto  |");
-                        for(int i = 0; i < produtos.size(); i++){
-                            produto = produtos.get(i);
-                            System.out.print("|  " + produto.data().replace("; ", " | "));
-                            System.out.println();
-                        }
-                    } else {
-                        System.out.println("Sem produtos cadastrados !");
+                        Calculo.calcularVenda(produtos);
+                        database.salvarDados(produtos);
+                        produtos = database.recuperarDados();
+
+                    } else{
+                        System.out.println("\nsem produtos cadastrados!");
                     }
-                    
+                    break;
+
+                case "6":
+                    Estoque.exibirProdutos(produtos);
                     break;
                     
                 case "S":

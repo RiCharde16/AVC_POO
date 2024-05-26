@@ -1,5 +1,6 @@
 package avc_poo;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
@@ -23,14 +24,83 @@ public class Cadastrar implements Salvar{
     }
 
     public static boolean modificarProduto(ArrayList<Produto> produtos){
+        Produto produto = null;
+
+        try{
+            System.out.println("------ Modificar produto ------");
+            System.out.println("Escolha um produto pelo seu id: ");
+            System.out.print("> ");
+
+            int id = input.nextInt();
+            for(int i = 0; i < produtos.size(); i++){
+                if(produtos.get(i).getCodProduto() == id){
+                    // produto = produtos.remove(i);      
+                    produto = produtos.get(i);
+                    break;
+                }
+            }
+
+            if(produto == null){
+                throw new IndexOutOfBoundsException();
+            }
+            
+            
+        } catch (InputMismatchException e){
+            System.out.println("\nValor invalido!");
+
+            input.nextLine();
+
+            return false;
+
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("\nId não encontrado!");
+
+            input.nextLine();
+
+            return false;
+        }
+
         return true;
-        // TODO: implementar o metodoo modoficar produto pegando o ArrayList com as classes produtos
-        // e aplicando o metodo .set(index, novo_valor)
+        
     }
 
     public static boolean excluirProduto(ArrayList<Produto> produtos){
-        // TODO: implementar o metodoo modoficar produto pegando o ArrayList com as classes produtos
-        // e aplicando o metodo .set(index, novo_valor)
+        Produto produto = null;
+
+        try{
+            System.out.println("------ Excluir Produto ------");
+            System.out.println("Escolha um produto pelo seu id: ");
+            System.out.print("> ");
+
+            int id = input.nextInt();
+            for(int i = 0; i < produtos.size(); i++){
+                if(produtos.get(i).getCodProduto() == id){
+                    produto = produtos.remove(i);           
+                    break;
+                }
+            }
+
+            if(produto == null){
+                throw new IndexOutOfBoundsException();
+            }
+            
+            System.out.println("\nProduto de Id: " + id +" removido com sucesso!!");
+            
+        } catch (InputMismatchException e){
+            System.out.println("\nValor invalido!");
+
+            input.nextLine();
+
+            return false;
+
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("\nId não encontrado!");
+
+            input.nextLine();
+
+            return false;
+        }
+
         return true;
     }
 
@@ -47,13 +117,21 @@ public class Cadastrar implements Salvar{
             System.out.print("> ");               
             double preco = input.nextDouble(); 
 
+            if(preco <= 0){
+                throw new Exception();
+            }
+
             System.out.println("Digite a quantidade: ");
             System.out.print("> ");
+
             int qtde = input.nextInt();
 
+            if(qtde <= 0){
+                throw new Exception();
+            }
             input.nextLine();
 
-            produtos.add(new Produto(produtos.size()+1 ,nome, preco, qtde));
+            produtos.add(new Produto(produtos.size()+1 ,nome.trim(), preco, qtde));
             System.out.println("\n Produto Cadastrado com Sucesso!! \n");  
 
             return true;
@@ -66,7 +144,6 @@ public class Cadastrar implements Salvar{
         }
     }
     
-
     public void salvarDados(ArrayList<Produto> produtos){
         try{
             FileWriter banco_dados = new FileWriter(arquivo);
@@ -90,22 +167,22 @@ public class Cadastrar implements Salvar{
             while (reader.hasNextLine()){
                 String row = reader.nextLine();
                 dados_estoque.add(row.split(";"));
-                // System.out.println();
             }
             for(String[] dado : dados_estoque){
                 int codProduto, qtde, desconto;
                 double preco;
+
+                // a função do metodo trim() e pegar cada valor dos dados em formato str (String)
+                // e tirar os espaços antes e depois deles]
                 codProduto = Integer.parseInt(dado[0].trim());
                 preco = Double.parseDouble(dado[2].trim());
                 qtde = Integer.parseInt(dado[3].trim());
                 desconto = Integer.parseInt(dado[4].trim());
-                // double preco ;
 
                 Produto produto =  new Produto(codProduto, dado[1], preco, qtde);
 
                 produto.setDesconto(desconto);
 
-                // System.out.println(produto[0] + produto[1] + produto[2] + produto[3] + produto[4]);
                 produtos.add(produto);
             }
             reader.close();
@@ -114,7 +191,6 @@ public class Cadastrar implements Salvar{
         }
 
         return produtos;
-        // return produtos;
     }
 
 }
