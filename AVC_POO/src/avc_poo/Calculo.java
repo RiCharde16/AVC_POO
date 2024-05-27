@@ -45,7 +45,7 @@ abstract class Calculo {
 
             produto.setDesconto(desconto);
             
-            System.out.println("\nDesconto de: " + desconto + "% feito para o produto de id: " + id+"\n");      
+            System.out.println("\nDesconto de: " + desconto + "% feito para o produto de id: " + id);      
             
         } catch (InputMismatchException e){
             System.out.println("\nValor invalido!");
@@ -85,10 +85,11 @@ abstract class Calculo {
                 } else{
                     // ira armazenar o id do produto para que não se repita na venda
                     id_old= id;
+                    int i;
                     
-                    for(int i = 0; i < produtos.size(); i++){
+                    for(i = 0; i < produtos.size(); i++){
                         if(produtos.get(i).getCodProduto() == id){
-                            produto = produtos.get(i);      
+                            produto = produtos.get(i); 
                             break;
                         }
                     }
@@ -125,7 +126,7 @@ abstract class Calculo {
                     }
 
                     if(produto.getQuantidade() == 0){
-                        produtos.remove(id-1);
+                        produtos.remove(i);
                     }
 
                     p++;

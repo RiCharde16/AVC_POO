@@ -32,18 +32,55 @@ public class Cadastrar implements Salvar{
             System.out.print("> ");
 
             int id = input.nextInt();
-            for(int i = 0; i < produtos.size(); i++){
+            int i;
+            for(i = 0; i < produtos.size(); i++){
                 if(produtos.get(i).getCodProduto() == id){
                     // produto = produtos.remove(i);      
                     produto = produtos.get(i);
                     break;
                 }
             }
+            
+            // System.out.print("Index do produto de Id: "+ id + " é " + i);
 
             if(produto == null){
                 throw new IndexOutOfBoundsException();
             }
             
+            input.nextLine();
+
+            System.out.println("Caso nao deseje alterar o campo digite 0");              
+
+            System.out.println("Edite o nome do produto: ");
+            System.out.print("> ");              
+            String nome = input.nextLine();
+            
+            System.out.println("Edite o preco do produto: ");
+            System.out.print("> ");              
+            double preco = input.nextDouble();
+
+            if(preco < 0){
+                throw new InputMismatchException();
+            }
+            
+            System.out.println("Edite a quantidade do produto: ");
+            System.out.print("> ");              
+            int qtde = input.nextInt();
+
+            if(qtde < 0){
+                throw new InputMismatchException();
+            }
+
+            if(!nome.equals("0")){
+                produto.setNome(nome);
+            }
+            if(preco != 0){
+                produto.setPreco(preco);
+            }
+            if(qtde != 0){
+                produto.setQuantidade(qtde);
+            }
+            System.out.println("\nProduto alterado com sucesso!");
             
         } catch (InputMismatchException e){
             System.out.println("\nValor invalido!");
@@ -122,12 +159,14 @@ public class Cadastrar implements Salvar{
                 throw new Exception();
             }
             input.nextLine();
+        
+            int ultimo_cod = produtos.get(produtos.size()-1).getCodProduto()+1;
 
-            produtos.add(new Produto(produtos.size()+1 ,nome.trim(), preco, qtde));
-            System.out.println("\n Produto Cadastrado com Sucesso!! \n");  
+            produtos.add(new Produto(ultimo_cod,nome.trim(), preco, qtde));
+            System.out.println("\n Produto Cadastrado com Sucesso!!");  
 
         } catch (Exception e){
-            System.out.println("\n Produto Nao Cadastrado !! \n");
+            System.out.println("\n Produto Nao Cadastrado !!");
 
             input.nextLine();
             

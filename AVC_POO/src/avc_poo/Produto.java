@@ -4,7 +4,17 @@ import java.util.ArrayList;
 
 interface Estoque{
     public static float calcularMediaPreco(ArrayList<Produto> produtos){
-        return 0.0f;
+        float valor_total = 0.0f;
+
+        for(Produto produto : produtos){
+            double preco = produto.getPreco();
+
+            valor_total += (float)preco;
+        }
+        
+        float mediaPreco = valor_total / produtos.size();
+
+        return mediaPreco;
     }
 
     public static void exibirProdutos(ArrayList<Produto> produtos){
@@ -18,6 +28,11 @@ interface Estoque{
                 System.out.print("|  " + produto.dados().replace("; ", " | ") + " |");
                 System.out.println();
             }
+
+            System.out.println();
+            System.out.println("Media preco dos produtos: " + String.format("%.2f",Estoque.calcularMediaPreco(produtos)));
+            System.out.println("Quantidade de produtos cadastrados: " + produtos.size());
+            
         } else {
             System.out.println("Sem produtos cadastrados !");
         }

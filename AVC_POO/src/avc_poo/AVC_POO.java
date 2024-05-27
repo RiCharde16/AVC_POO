@@ -54,7 +54,9 @@ public class AVC_POO {
                 case "3":
                     //TODO: criar o metodo para modificar um produto
                     if(!produtos.isEmpty()){
-                        System.out.println("Modificar produto");
+                        Cadastrar.modificarProduto(produtos);
+                        database.salvarDados(produtos);
+                        produtos = database.recuperarDados();
 
                     } else{
                         System.out.println("\nsem produtos cadastrados!");
