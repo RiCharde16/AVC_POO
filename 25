@@ -1,0 +1,77 @@
+[33mcommit 76cecd4440d7b2ac6cc2385848430b2799aa1e55[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Richard16 <90813677+RiCharde16@users.noreply.github.com>
+Date:   Mon May 27 21:34:22 2024 +0000
+
+    feat: adicionada a funcao de editar dados e calcular media
+
+[33mcommit e1332077b75e313abac0f93979ecbae56cbe77b0[m
+Author: RiCharde16 <Farneste23@gmail.com>
+Date:   Sun May 26 19:34:06 2024 -0300
+
+    refactor: mudado o nome dos metodos
+
+[33mcommit ba726eb9990e7f8d05ee17285298570b0ea5baf1[m
+Author: RiCharde16 <Farneste23@gmail.com>
+Date:   Sun May 26 19:17:55 2024 -0300
+
+    feat: removido o retorno boolean dos metodos
+
+[33mcommit 39f073c2460ba7cf5845264275f7a51f886c63df[m
+Author: RiCharde16 <Farneste23@gmail.com>
+Date:   Sun May 26 19:09:49 2024 -0300
+
+    feat: adicionado os metodos para manipular os dados
+
+[33mcommit 3972c418e31e3037507d660ca6569d9be309fe69[m
+Author: RiCharde16 <Farneste23@gmail.com>
+Date:   Sat May 25 20:00:25 2024 -0300
+
+    docs: arrumado o README classes a implementar
+
+[33mcommit c787b593f35ce7dd4296fbec5404f5f887f11338[m
+Author: RiCharde16 <Farneste23@gmail.com>
+Date:   Sat May 25 19:57:15 2024 -0300
+
+    feat: separada cada ação do menu nas classes, é arrumado o diagrama de classes
+
+[33mcommit 94281fbe0b9e2ecd92eb1c81e73f0f31317632be[m
+Author: RiCharde16 <Farneste23@gmail.com>
+Date:   Thu May 23 20:28:58 2024 -0300
+
+    feat: alterando as classes e o diagrama
+
+[33mcommit f487097635b636160deaf63802d9f986fe7ba960[m
+Author: Richard16 <90813677+RiCharde16@users.noreply.github.com>
+Date:   Tue May 21 20:40:23 2024 -0300
+
+    feat: adiconado as classes necessarias
+
+[33mcommit f0c2e894fe30a07bb78f91873ca169461f263d9b[m
+Author: RiCharde16 <Farneste23@gmail.com>
+Date:   Sun May 19 18:21:53 2024 -0300
+
+    docs: adicionado o diagrama de Classe
+
+[33mcommit 75708d40b42a0cd63502aa542ddc0e4395d27da1[m
+Author: RiCharde16 <Farneste23@gmail.com>
+Date:   Thu May 16 12:05:45 2024 -0300
+
+    docs: adicioando Objetivo e as Classes necessarias
+
+[33mcommit ede6807b9745e416b7fe8e741cd2657f962ee4e1[m
+Author: RiCharde16 <Farneste23@gmail.com>
+Date:   Thu May 16 11:56:12 2024 -0300
+
+    fix: arrumado um erro no next() e nextLine()
+
+[33mcommit 12e50fae25e7b048f332577e9d7f4e96810c5521[m
+Author: Richard16 <90813677+RiCharde16@users.noreply.github.com>
+Date:   Tue May 14 22:00:05 2024 -0200
+
+    Arquivo_main
+
+[33mcommit 2ae2e24cd770b839c4ff6ef871e9688ffb83819c[m
+Author: Richard16 <90813677+RiCharde16@users.noreply.github.com>
+Date:   Tue May 14 21:59:15 2024 -0200
+
+    Initial commit
